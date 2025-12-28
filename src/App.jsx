@@ -71,14 +71,18 @@ function App() {
     const loadModels = async () => {
       setIsLoading(true);
       try {
-        const MODEL_URL = '/models';
+        // 在Capacitor应用中使用相对路径
+        const MODEL_URL = './models';
         await Promise.all([
           faceapi.nets.tinyFaceDetector.loadFromUri(MODEL_URL),
           faceapi.nets.faceLandmark68Net.loadFromUri(MODEL_URL)
         ]);
         setIsLoading(false);
       } catch (error) {
-        console.error('模型加载失败:', error.message);
+        console.error('模型加载失败:', error);
+        // 记录详细错误信息
+        console.error('错误名称:', error.name);
+        console.error('错误堆栈:', error.stack);
         setIsLoading(false);
       }
     };

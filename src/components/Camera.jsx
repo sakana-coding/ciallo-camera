@@ -34,7 +34,13 @@ const Camera = ({ isActive, onFaceDetected, onVideoReady }) => {
       setVideoSize({ width: 0, height: 0 });
       
       const stream = await navigator.mediaDevices.getUserMedia({
-        video: { width: { ideal: 1280 }, height: { ideal: 720 } },
+        video: {
+          facingMode: 'user',
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
+          // 添加 iOS 兼容配置
+          frameRate: { ideal: 30, max: 60 }
+        },
         audio: false
       });
       

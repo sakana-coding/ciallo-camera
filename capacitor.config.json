@@ -1,0 +1,11 @@
+{
+  "appId": "com.ciallo.camera",
+  "appName": "ciallo-camera",
+  "webDir": "dist",
+  "server": {
+    "allowNavigation": ["*"]
+  },
+  "ios": {
+    "contentInset": "always"
+  }
+}
